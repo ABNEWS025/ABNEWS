@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornal de Notícias</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        #main-title {
+            font-size: 3em;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            background-color: #333;
+            color: white;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        .search-bar {
+            width: 50%;
+            padding: 10px;
+            margin: 20px auto;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .headlines {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .headline {
+            background-color: white;
+            padding: 20px;
+            margin: 10px 0;
+            width: 80%;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .headline:hover {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            display: none;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: white;
+            width: 80%;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo de destaque para fácil edição */
+        .edit-highlight {
+            border: 2px dashed red;
+            padding: 10px;
+            background-color: #f8f8f8;
+        }
+
+        /* Inicialmente, só mostrar a seção de notícias */
+        .fofocas, .search-bar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div id="main-title">AB News</div>
+</header>
+
+<!-- Botões para alternar entre Notícias e Fofocas -->
+<div class="button-container">
+    <button class="button" onclick="showSection('noticias')">Notícias</button>
+    <button class="button" onclick="showSection('fofocas')">Fofocas</button>
+</div>
+
+<!-- Barra de pesquisa -->
+<input type="text" id="search-bar" class="search-bar" placeholder="Pesquisar notícias..." onkeyup="searchNews()">
+
+<!-- Seção de Notícias -->
+<div id="noticias" class="headlines">
+    <!-- Manchete 1 -->
+    <div class="headline edit-highlight" onclick="toggleNews('news1')">Melhores sites pra estudar programação!</div>
+    <div id="news1" class="news-content">
+        <p>Após entrevista com um programador, ele citou que existem 2 melhores sites pra quem está querendo começar na programação, para computadores, recomendou fortemente o "FreeCodeCamp", e para celulares e práticas rápidas, "Mimo Code".</p>
+    </div>
+
+    <!-- Manchete 2 -->
+    <div class="headline edit-highlight" onclick="toggleNews('news2')">Minecraft: O filme será lançado!</div>
+    <div id="news2" class="news-content">
+        <p>Em 3 de Abril, será lançado nos cinemas o novo filme do Minecraft, que está com um estilo de arte bonito e muita esperança que será bom, porém, há muitos que acreditam que será ruim, principalmente por ser um Live Action e não incrementar a Lore do jogo.</p>
+    </div>
+
+    <!-- Manchete 3 -->
+    <div class="headline edit-highlight" onclick="toggleNews('news3')">Coleção Vaga-lume</div>
+    <div id="news3" class="news-content">
+        <p>A sequência de livros mais legal para adolescentes, com certeza é a coleção Vaga-Lume. É uma série de livros para pessoas de idade entre 8 a 14 anos, que podem parecer infantis, mas têm muita qualidade. Os mais famosos são "O mistério do 5 estrelas", "O caso da borboleta atíria", e "A ilha perdida".</p>
+    </div>
+</div>
+
+<!-- Seção de Fofocas -->
+<div id="fofocas" class="headlines">
+    <!-- Manchete 4 -->
+    <div class="headline edit-highlight" onclick="toggleNews('news4')">Bruna Biancardi Exibe Barrigão da Segunda Gravidez Ignorando Polêmica de Neymar</div>
+    <div id="news4" class="news-content">
+        <p>Grávida pela segunda vez, Bruna Biancardi, namorada do jogador Neymar, surpreendeu seus seguidores ao mostrar o barrigão em uma foto recente nas redes sociais. De top branco e calça, a influenciadora compartilhou o clique em frente ao espelho, destacando o crescimento de sua barriga. Bruna e Neymar, já pais de Mavie, aguardam o nascimento de mais uma filha, que se chamará Mel.
+
+A postagem de Bruna veio em meio à polêmica sobre acusações de traição contra Neymar. A modelo Any Awuada afirmou que teve um relacionamento com o jogador durante uma festa, mas Bruna escolheu focar na gravidez e ignorou as especulações.</p>
+    </div>
+
+    <!-- Manchete 5 -->
+    <div class="headline edit-highlight" onclick="toggleNews('news5')">Oruam Envolve-se em Polêmica Após Prisão no Rio</div>
+    <div id="news5" class="news-content">
+        <p>O rapper Oruam causou polêmica após ser detido no Rio de Janeiro por direção perigosa. Liberado no mesmo dia, surgiram rumores de que a prisão teria sido uma estratégia de marketing para promover seu novo álbum Liberdade. Além disso, o cantor está sendo criticado por homenagear o criminoso Elias Maluco, gerando debates e até projetos de lei contra suas ações. Apesar disso, seu novo álbum segue fazendo sucesso nas plataformas de streaming.</p>
+    </div>
+
+    <!-- Manchete 6 -->
+    <div class="headline edit-highlight" onclick="toggleNews('news6')">Gusttavo Lima Envolvido em 3 Polemicas de uma vez!</div>
+    <div id="news6" class="news-content">
+        <p>Gusttavo Lima tem se envolvido em diversas polêmicas nos últimos meses. O cantor foi condenado a pagar R$ 70 mil por danos morais devido ao uso indevido de um número de telefone em sua música Bloqueado. Além disso, ele desistiu de sua candidatura à presidência em 2026 para focar em sua carreira internacional e ações sociais.
+
+Em setembro de 2024, Gusttavo foi alvo de investigação na Operação Integration, suspeito de envolvimento com jogos de azar online, mas o mandado de prisão foi revogado no dia seguinte e as investigações foram arquivadas. Ele nega qualquer envolvimento com atividades ilícitas.</p>
+    </div>
+</div>
+
+<script>
+    // Função para alternar a visibilidade das notícias
+    function toggleNews(newsId) {
+        let newsContent = document.getElementById(newsId);
+        if (newsContent.style.display === "none" || newsContent.style.display === "") {
+            newsContent.style.display = "block";
+        } else {
+            newsContent.style.display = "none";
+        }
+    }
+
+    // Função de pesquisa (filtra as manchetes)
+    function searchNews() {
+        let searchValue = document.getElementById('search-bar').value.toLowerCase();
+        let headlines = document.querySelectorAll('.headline');
+       
+        headlines.forEach(function (headline) {
+            if (headline.textContent.toLowerCase().includes(searchValue)) {
+                headline.style.display = 'block';
+            } else {
+                headline.style.display = 'none';
+            }
+        });
+    }
+
+    // Função para mostrar a seção correta (Notícias ou Fofocas)
+    function showSection(section) {
+        // Esconde todas as seções
+        document.getElementById('noticias').style.display = 'none';
+        document.getElementById('fofocas').style.display = 'none';
+       
+        // Exibe a seção desejada
+        document.getElementById(section).style.display = 'flex';
+    }
+
+    // Exibe a seção de Notícias por padrão
+    showSection('noticias');
+</script>
+
+</body>
+</html>
